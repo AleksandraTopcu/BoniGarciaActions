@@ -11,8 +11,6 @@ public class NavigationTests {
     static WebDriver driver;
     private static final String BASE_URL = "https://bonigarcia.dev/selenium-webdriver-java/navigation1.html";
 
-    Actions actions = new Actions(driver);
-
     @BeforeAll
     static void setUp(){
         System.setProperty("webdriver.chrome.driver", "/Users/aineumestova/Downloads/chromedriver-mac-arm64/chromedriver");
@@ -40,7 +38,7 @@ public class NavigationTests {
         WebElement secondPageText = driver.findElement(By.className("lead"));
         assertAll(
                 ()-> assertEquals("https://bonigarcia.dev/selenium-webdriver-java/navigation2.html", driver.getCurrentUrl()),
-                ()->assertTrue(secondPageText.getText().contains("Ut endim"))
+                ()->assertTrue(secondPageText.getText().contains("Ut enim"))
         );
     }
 
