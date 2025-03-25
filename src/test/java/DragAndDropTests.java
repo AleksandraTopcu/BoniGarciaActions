@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -20,5 +21,15 @@ public class DragAndDropTests {
     @AfterAll
     static void tearDown() {
         driver.quit();
+    }
+
+    @Test
+    @DisplayName("Проверка drag-and-drop")
+    void  dragAndDropTest() {
+        WebElement draggable = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("target"));
+        actions.dragAndDrop(draggable, target).perform();
+        Assertions.assertEquals(draggable.getLocation(), target.getLocation());
+
     }
 }
